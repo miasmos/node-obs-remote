@@ -132,7 +132,7 @@ OBSRemote.prototype.CheckForAuth = function() {
 			self.authChallenge = res.challenge;
 			self.Authenticate();
 		} else {
-			setTimeout(self.events.emit('connect'),1000);
+			setTimeout(function(){self.events.emit('connect')},1000);
 			self.requestStreamStatus();
 			self.requestScenes();
 			self.requestVolumes();
@@ -153,7 +153,7 @@ OBSRemote.prototype.Authenticate = function() {
 	this.Send(req, function(res){
 		if(res["status"] == "ok") {
 			console.log('Auth Success');
-			setTimeout(self.events.emit('connect'),1000);
+			setTimeout(function(){self.events.emit('connect')},1000);
 			self.requestStreamStatus();
 			self.requestScenes();
 			self.requestVolumes();

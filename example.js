@@ -3,15 +3,15 @@ var opts = {pass: "foo", host: "localhost"};
 var obs = new OBSRemote(opts);
 
 obs.events.on('connect', function(){
-	obs.MuteMic();
+	// obs.MuteMic();
 	// obs.UnMuteMic();
-	// obs.ToggleMicMute();
+	obs.ToggleMicMute();
 	// obs.MuteDesktop();
 	// obs.UnMuteDesktop();
 	// obs.ToggleDesktopMute();
 	// obs.SetMicVolume(0);
 	// obs.SetDesktopVolume(0);
-	obs.StartStream();
+	// obs.StartStream();
 	// obs.StopStream();
 	// obs.ToggleStream();
 	// obs.StartPreview();

@@ -14,7 +14,7 @@ function OBSRemote(opts) {
 	self.authChallenge = "";
 	self.requestCallbacks = {};
 	self.events = new events.EventEmitter();
-
+	self.debug = false;
 	self.Connect();
 }
 
@@ -29,7 +29,7 @@ OBSRemote.prototype.Connect = function() {
 	});
 
 	self.client.on('connect', function(connection){
-		console.log('Connected to '+"ws://"+self.opts.host+":4444");
+		//console.log('Connected to '+"ws://"+self.opts.host+":4444");
 		self.connection = connection;
 		self.supressWebsocketReconnect = false;
 		self.CheckForAuth();
@@ -38,7 +38,7 @@ OBSRemote.prototype.Connect = function() {
 			var response = JSON.parse(data.utf8Data);
 			if(!response) {return;}
 			if(response["update-type"]) {
-				console.log("Got "+response["update-type"]);
+				if (self.debug) {console.log("Got "+response["update-type"]);}
 
 				/* this is an update */
 				switch(response["update-type"]) {
@@ -117,7 +117,7 @@ OBSRemote.prototype.Send = function(msg, callback) {
 			this.requestCallbacks[id] = callback;
 		}
 		msg["message-id"] = id.toString();
-		console.log("Sent "+msg["request-type"]);
+		if (this.debug) {console.log("Sent "+msg["request-type"]);}
 		this.connection.sendUTF(JSON.stringify(msg));
 		this.currentMessageCounter++;
 	}
@@ -152,7 +152,7 @@ OBSRemote.prototype.Authenticate = function() {
 	var self = this;
 	this.Send(req, function(res){
 		if(res["status"] == "ok") {
-			console.log('Auth Success');
+			//console.log('Auth Success');
 			setTimeout(function(){self.events.emit('connect')},1000);
 			self.requestStreamStatus();
 			self.requestScenes();
@@ -261,6 +261,8 @@ OBSRemote.prototype.onStartStreaming = function(res) {
 	if (res["status"] === "ok") {
 		assignStream(res);
 	}
+	this.streaming = true;
+	this.previewing = true;
 	this.events.emit('start', res);
 }
 
@@ -268,6 +270,8 @@ OBSRemote.prototype.onStopStreaming = function(res) {
 	if (res["status"] === "ok") {
 		assignStream(res);
 	}
+	this.streaming = false;
+	this.previewing = false;
 	this.events.emit('stop', res);
 }
 
@@ -500,6 +504,7 @@ OBSRemote.prototype.assignVolumes = function(res) {
 
 OBSRemote.prototype.assignStream = function(res) {
 	var previewOnly = res["preview-only"];
+	console.log(res);
 	this.previewing = previewOnly;
 	this.streaming = !previewOnly;
 }

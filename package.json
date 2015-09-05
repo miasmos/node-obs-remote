@@ -1,0 +1,26 @@
+{
+  "name": "obsremote-node",
+  "version": "1.0.0",
+  "description": "Send commands to obsremote via js",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenpoole/OBSRemote-node.git"
+  },
+  "keywords": [
+    "obsremote",
+    "obs",
+    "remote"
+  ],
+  "author": "Stephen Poole <stephenwpoole@gmail.com> (http://github.com/stephenpoole)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stephenpoole/OBSRemote-node/issues"
+  },
+  "homepage": "https://github.com/stephenpoole/OBSRemote-node#readme"
+}

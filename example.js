@@ -1,11 +1,11 @@
 var OBSRemote = require('./main.js');
-var opts = {pass: "foo", host: "localhost"};
+var opts = {pass: "admin", host: "127.0.0.1"};
 var obs = new OBSRemote(opts);
 
 obs.events.on('connect', function(){
 	// obs.MuteMic();
 	// obs.UnMuteMic();
-	obs.ToggleMicMute();
+	//obs.ToggleMicMute();
 	// obs.MuteDesktop();
 	// obs.UnMuteDesktop();
 	// obs.ToggleDesktopMute();
@@ -14,10 +14,10 @@ obs.events.on('connect', function(){
 	// obs.StartStream();
 	// obs.StopStream();
 	// obs.ToggleStream();
-	// obs.StartPreview();
+	obs.StartPreview();
 	// obs.StopPreview();
 	// obs.TogglePreview();
-	// obs.SetSceneByName('foo');
+	// obs.SetSceneByName('Title');
 	// obs.SetScene(0);
 	// obs.SetSourceVisibleByName('foo');
 	// obs.SetSourceInvisibleByName('foo');

@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/obsremote-node.svg)](http://badge.fury.io/js/obsremote-node)
+  
 OBSRemote-node
 ==============
 

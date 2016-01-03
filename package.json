@@ -1,5 +1,5 @@
 {
-  "name": "obsremote-node",
+  "name": "node-obs-remote",
   "version": "1.0.1",
   "description": "Send commands to obsremote via js",
   "main": "main.js",
@@ -15,7 +15,8 @@
   "keywords": [
     "obsremote",
     "obs",
-    "remote"
+    "remote",
+    "node"
   ],
   "author": "Stephen Poole <stephenwpoole@gmail.com> (http://github.com/stephenpoole)",
   "license": "MIT",

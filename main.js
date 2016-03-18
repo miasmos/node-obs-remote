@@ -494,12 +494,10 @@ OBSRemote.prototype.SetSourceOrderByName = function(newIndices) {
 
 /* Utils */
 OBSRemote.prototype.assignVolumes = function(res) {
-	this.micVolume = res["mic-volume"];
-	this.desktopVolume = res["desktop-volume"];
-	this.micMuted = res["mic-muted"];
-	this.desktopMuted = res["desktop-muted"];
-	this.micVolume = res["mic-volume"];
-	this.desktopVolume = res["destop-volume"];
+    this.micVolume = res["mic-volume"];
+    this.desktopVolume = res["desktop-volume"];
+    this.micMuted = res["mic-muted"];
+    this.desktopMuted = res["desktop-muted"];
 }
 
 OBSRemote.prototype.assignStream = function(res) {
